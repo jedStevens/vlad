@@ -1,29 +1,13 @@
-/* summator.cpp */
-
 #include "character.h"
+#include "typedefs.h"
 
-void Character::add(int value) {
-
-    count += value;
+void Character::spin(float delta){
+  set_rotation_degrees(get_rotation_degrees() + Vector3(0.0, delta, 0.0));
 }
-
-void Character::reset() {
-
-    count = 0;
-}
-
-int Character::get_total() const {
-
-    return count;
-}
-
 void Character::_bind_methods() {
 
-    ClassDB::bind_method(D_METHOD("add", "value"), &Character::add);
-    ClassDB::bind_method(D_METHOD("reset"), &Character::reset);
-    ClassDB::bind_method(D_METHOD("get_total"), &Character::get_total);
+    ClassDB::bind_method(D_METHOD("spin", "spin"), &Character::spin);
 }
 
 Character::Character() {
-    count = 0;
 }
